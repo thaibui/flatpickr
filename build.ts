@@ -141,7 +141,7 @@ async function transpileStyle(src: string, compress = false) {
       .include(`${__dirname}/src/style/themes`)
       .use(
         stylusAutoprefixer({
-          browsers: pkg.browserslist,
+          overrideBrowserslist: pkg.browserslist,
         })
       )
       .render((err: Error | undefined, css: string) =>
