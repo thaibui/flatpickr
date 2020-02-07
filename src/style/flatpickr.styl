@@ -1,4 +1,4 @@
-@require "./_vars.styl"
+@import "./_vars.styl"
 
 @keyframes fpFadeInDown
   from
@@ -20,11 +20,11 @@
   animation none
   direction ltr
   border 0
-  font-size 14px
+  font-size var(--flatpickr-font-size)
   line-height 24px
   border-radius 5px
   position absolute
-  width $calendarWidth
+  width var(--flatpickr-calendar-width)
   box-sizing border-box
   touch-action manipulation
 
@@ -163,7 +163,7 @@
     background $monthBackground
     color $monthForeground
     fill $monthForeground
-    height $monthNavHeight
+    height var(--flatpickr-month-nav-height)
     line-height 1
     text-align center
     position relative
@@ -176,7 +176,7 @@
     cursor pointer
     position absolute
     top 0
-    height $monthNavHeight
+    height var(--flatpickr-month-nav-height)
     padding 10px
     z-index 3
     color $monthForeground
@@ -304,9 +304,9 @@
   position absolute
   width 75%
   left 12.5%
-  padding (0.22*$monthNavHeight) 0 0 0
+  padding calc(var(--flatpickr-month-nav-height) * 0.22) 0 0 0
   line-height 1
-  height $monthNavHeight
+  height var(--flatpickr-month-nav-height)
   display inline-block
   text-align center
   transform translate3d(0px, 0px, 0px)
@@ -404,7 +404,7 @@
   width 100%
   display flex
   align-items center
-  height $weekdaysHeight
+  height var(--flatpickr-weekdays-height)
 
   .flatpickr-weekdaycontainer
     display flex
@@ -433,7 +433,7 @@ span.flatpickr-weekday
   overflow: hidden;
   display flex
   align-items: flex-start;
-  width $daysWidth
+  width var(--flatpickr-days-width)
 
   &:focus
     outline 0
@@ -447,9 +447,9 @@ span.flatpickr-weekday
   padding 0
   outline 0
   text-align left
-  width ($daysWidth)
-  min-width ($daysWidth)
-  max-width ($daysWidth)
+  width (var(--flatpickr-days-width))
+  min-width (var(--flatpickr-days-width))
+  max-width (var(--flatpickr-days-width))
   box-sizing border-box
   display inline-block
   display -ms-flexbox
@@ -476,9 +476,9 @@ span.flatpickr-weekday
   font-weight 400
   width 14.2857143%
   flex-basis 14.2857143%
-  max-width $daySize
-  height $daySize
-  line-height $daySize
+  max-width var(--flatpickr-day-size)
+  height var(--flatpickr-day-size)
+  line-height var(--flatpickr-day-size)
   margin 0
 
   display inline-block
@@ -519,21 +519,22 @@ span.flatpickr-weekday
 
     &.startRange
       border-radius 50px 0 0 50px
-      //box-shadow:  (2.5*$dayMargin) 0 0 $selectedDayBackground
+      //box-shadow:  (2.5*var(--flatpickr-day-margin)) 0 0 $selectedDayBackground
 
     &.endRange
       border-radius 0 50px 50px 0
 
     // Avoid adding extra fill because it overflows in multimonth mode
     &.startRange + .endRange:not(:nth-child(7n+1))
-      box-shadow: (-5*$dayMargin) 0 0 $selectedDayBackground
+      box-shadow: calc(-5 * var(--flatpickr-day-margin)) 0 0 $selectedDayBackground
 
     &.startRange.endRange
       border-radius 50px
 
   &.inRange
     border-radius 0
-    box-shadow: (-2.5*$dayMargin) 0 0 $dayHoverBackground, (2.5*$dayMargin) 0 0 $dayHoverBackground
+    box-shadow: calc(-2.5 * var(--flatpickr-day-margin)) 0 0 $dayHoverBackground, 
+    calc(2.5*var(--flatpickr-day-margin)) 0 0 $dayHoverBackground
 
   &.flatpickr-disabled, &.flatpickr-disabled:hover,
   &.prevMonthDay, &.nextMonthDay,
@@ -554,8 +555,8 @@ span.flatpickr-weekday
 
   &.week.selected
     border-radius 0
-    box-shadow: (-2.5*$dayMargin) 0 0 $selectedDayBackground,
-      (2.5*$dayMargin) 0 0 $selectedDayBackground
+    box-shadow: calc(-2.5 * var(--flatpickr-day-margin)) 0 0 $selectedDayBackground,
+      calc(2.5 * var(--flatpickr-day-margin)) 0 0 $selectedDayBackground
 
   &.hidden
     visibility hidden
@@ -576,7 +577,7 @@ span.flatpickr-weekday
   .flatpickr-weekday
     float none
     width 100%
-    line-height $weekdaysHeight
+    line-height var(--flatpickr-weekdays-height)
 
   span.flatpickr-day
     &, &:hover
@@ -655,7 +656,7 @@ span.flatpickr-weekday
     height inherit
     line-height inherit
     color $dayForeground
-    font-size 14px
+    font-size var(--flatpickr-font-size)
     position relative
     box-sizing border-box
     -webkit-appearance textfield

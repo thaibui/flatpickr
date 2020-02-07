@@ -145,16 +145,16 @@ function FlatpickrInstance(
           self.calendarContainer.style.display = "block";
         }
         if (self.daysContainer !== undefined) {
-          const daysWidth = (self.days.offsetWidth + 1) * config.showMonths;
+          const daysWidth = `calc(var(--flatpickr-days-width) * ${config.showMonths})`;
 
-          self.daysContainer.style.width = daysWidth + "px";
+          self.daysContainer.style.width = daysWidth;
 
-          self.calendarContainer.style.width =
-            daysWidth +
-            (self.weekWrapper !== undefined
-              ? self.weekWrapper.offsetWidth
-              : 0) +
-            "px";
+          self.calendarContainer.style.width = `calc(
+            ${daysWidth} + 
+            ${
+              self.weekWrapper !== undefined ? self.weekWrapper.offsetWidth : 0
+            }px
+          )`;
 
           self.calendarContainer.style.removeProperty("visibility");
           self.calendarContainer.style.removeProperty("display");
